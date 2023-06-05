@@ -12,9 +12,8 @@
 
 body{
   background:
-  url(https://images.unsplash.com/photo-1684194952323-332460c595e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80)
+  url(https://images.unsplash.com/photo-1508615070457-7baeba4003ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80)
   center / cover no-repeat fixed;
-
   //background:
   //url(https://images.unsplash.com/photo-1684194952323-332460c595e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80)
   //center / cover no-repeat fixed;
@@ -73,10 +72,9 @@ body{
 
 .cards{
   border: 1px solid rgba(255, 255, 255, .25);
-  border-radius: 20px;
+  //border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.45);
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-
   backdrop-filter: blur(15px);
 }
 
@@ -122,3 +120,8 @@ body{
   width: 50px;
 }
 
+
+.check-status-btn: hover{
+  background-color: white;
+  color: white;
+}

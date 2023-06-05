@@ -4,7 +4,7 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import dayjs from 'dayjs';
 import Cookies from 'js-cookie';
 import * as React from 'react';
-import { Image, Card, Row, Col, Modal, Steps, Pagination } from 'antd';
+import { Input, Button, Image, Card, Row, Col, Modal, Steps, Pagination } from 'antd';
 
 import 'antd/dist/reset.css'; 
 import { useState, useEffect }  from "react";
@@ -86,7 +86,7 @@ export default function ExpenseList({
     //console.log(indexOfLastPage,indexOfFirstPage,page,pageSize,currentData)
     
 
- 
+  
   return (
     <>
       {/*
@@ -110,8 +110,6 @@ export default function ExpenseList({
     
 
 
-   
-
     <Row>
       {currentData.map((row)=>{
                   return(
@@ -121,10 +119,9 @@ export default function ExpenseList({
                             className='cards'
                             headStyle={{textAlign: 'center', 
                             border: '1px solid rgba(255, 255, 255, .25)',
-                            borderRadius: '20px',
+                            //borderRadius: '20px 20px 0 0',
                             //backgroundColor: 'rgba(255, 255, 255, 0.45)',
                             boxShadow: '0 0 10px 1px rgba(0, 0, 0, 0.25)',
-                          
                             backdropFilter: 'blur(15px)'
                           }}
                             style={{margin: '10px 25px', boxShadow: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px'}}
@@ -137,12 +134,12 @@ export default function ExpenseList({
                             <h6>Project Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>{row.projName}</span></h6>
                             <h6>Amount (Rs):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>{row.amount}</span></h6>
                             <h6>Date of Expense:&nbsp; <span>{formatDate(row.date)}</span></h6>
-                            <p style={{textAlign:"right"}}><span style={{cursor: "pointer"}} onClick={()=>{
+                            <p style={{textAlign:"right"}}><Button className="check-status-btn" size="small" style={{background: "none", cursor: "pointer", border: "1px solid"}} onClick={()=>{
                               setSelected(row);
                               setopenModal(true);
                               setPhotoUi(row._id);
                             }}
-                            >Check Status</span></p>
+                            >Check Status</Button></p>
                             
       
                         </div>
@@ -161,7 +158,7 @@ export default function ExpenseList({
           total={data.length}
           current={page}
           pageSize={pageSize}
-      
+          showQuickJumper
           onChange={(page)=>{
             setPage(page);
           }}
