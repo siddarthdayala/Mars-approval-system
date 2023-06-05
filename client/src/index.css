@@ -1,0 +1,124 @@
+
+.text-white {
+  color: white;
+  text-decoration: none;
+}
+
+*{
+  margin:0;
+  padding: 0;
+  
+}
+
+body{
+  background:
+  url(https://images.unsplash.com/photo-1684194952323-332460c595e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80)
+  center / cover no-repeat fixed;
+
+  //background:
+  //url(https://images.unsplash.com/photo-1684194952323-332460c595e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80)
+  //center / cover no-repeat fixed;
+}
+
+.nav{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, .25);
+
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(15px);
+}
+
+.nav h2{
+  margin: 15px 0 15px 15px ;
+}
+
+.logout-button{
+  height: 50%;
+  margin-top: 12px;
+}
+
+.login_register{
+  margin-top: 5px;
+}
+
+.login-button{
+  margin-right: 7px;
+
+}
+
+.page-header{
+  margin: 80px 0 30px 30px;
+}
+
+.table-chart-icon{
+  margin: 0 7px 5px 0;
+}
+
+.add-claim-button{
+  margin: 30px 0 0 40px;
+  padding: 10px;
+}
+
+.add-circle-icon{
+  margin: 0 5px 3px 0;
+}
+
+.claim-form{
+  margin-top: 40px;
+}
+
+.cards{
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(15px);
+}
+
+
+.modal-details{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.modal-details p{
+  color: #767676;
+}
+
+.modal-details h4{
+  color: black;
+}
+
+
+.modal-details-1 h5{
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.pagination{
+  display: table;
+  margin: 8px auto;
+}
+
+
+
+.modal-details-1{
+  display: flex;
+}
+
+
+.modal-proof{
+    margin-left: 100px;
+}
+
+.modal-proof img{
+  height: 50px;
+  width: 50px;
+}
+
