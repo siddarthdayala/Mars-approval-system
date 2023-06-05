@@ -109,8 +109,6 @@ export const create = async (req, res) => {
     status,
     user_id: req.user._id,
   });
-
-
   await expense.save();
   res.json({ message: 'Success' });
 };
