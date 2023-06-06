@@ -220,7 +220,8 @@ export default function ExpenseList({
                   {
                     photos.map(({ photo, _id })=>{
                       let fname = selected.billProof.slice(selected.billProof.indexOf(":")+2, selected.billProof.indexOf("lastModified")-3);
-                      if(photo.slice(9)===fname){
+
+                      if(photo.slice(8)===fname || photo.slice(9)===fname || photo.slice(10)===fname){
                         return(
                           <Image key={_id} src={`http://localhost:4000/${photo}`} alt="proof" width={400} height={200} />
                         )
