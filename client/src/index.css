@@ -35,9 +35,29 @@ body{
   margin: 15px 0 15px 15px ;
 }
 
+.home_history_logout{
+  margin-top: 20px;
+  display: flex;
+}
+
+.home_history_logout div{
+  margin-right: 20px;
+  font-size: 18px;
+
+}
+
+.home-button, .history-button{
+  color: black;
+  text-decoration: none;
+}
+
 .logout-button{
-  height: 50%;
-  margin-top: 12px;
+  background: none;
+  color: black;
+  margin-top: -4px;
+  font-size: 18px;
+
+  padding: 0px;
 }
 
 .login_register{
@@ -124,4 +144,18 @@ body{
 .check-status-btn: hover{
   background-color: white;
   color: white;
+}
+
+
+.MuiTable-root{
+  border: 1px solid rgba(255, 255, 255, .25);
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  backdrop-filter: blur(15px);
+}
+
+.MuiTableHead-root{
+  border: 1px solid rgba(255, 255, 255, .25);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(15px);
 }

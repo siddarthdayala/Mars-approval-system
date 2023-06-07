@@ -8,10 +8,16 @@ import Link from '@mui/material/Link';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const navigate = useNavigate();
+
+  const [userType, setUserType] = React.useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,7 +27,8 @@ export default function Register() {
       lastName: data.get('lastName'),
       email: data.get('email'),
       password: data.get('password'),
-      empId: data.get('empId'),
+      userId: data.get('userId'),
+      userType: userType,
     };
 
     const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/register`, {
@@ -35,6 +42,10 @@ export default function Register() {
       navigate('/');
     }
   };
+
+  function handleChange(e) {
+    setUserType(e.target.value);
+  }
 
   return (
     <Container>
@@ -62,6 +73,7 @@ export default function Register() {
                 fullWidth
                 id="firstName"
                 label="First Name"
+                autoFocus
               />
             </Grid>
             <Grid item xs={12} sm={4.5}>
@@ -78,13 +90,31 @@ export default function Register() {
               <TextField
                 required
                 fullWidth
-                id="empId"
+                id="userId"
                 label="Employee Id"
-                name="empId"
+                name="userId"
                 autoComplete="family-name"
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={3}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">User Type</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={userType}
+                  label="UserType"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={'Admin'}>Admin</MenuItem>
+                  <MenuItem value={'Employee'}>Employee</MenuItem>
+                  <MenuItem value={'HR'}>HR or Department Head</MenuItem>
+                  <MenuItem value={'Director'}>Director</MenuItem>
+                  <MenuItem value={'FinanceDept'}>Finance Department</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={4.5}>
               <TextField
                 required
                 fullWidth
@@ -94,7 +124,7 @@ export default function Register() {
                 autoComplete="email"
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={4.5}>
               <TextField
                 required
                 fullWidth
@@ -114,6 +144,7 @@ export default function Register() {
           >
             Sign Up
           </Button>
+
           <Grid container justifyContent="flex-end">
             <Grid item>
               <RouterLink to="/login">

@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Button from 'react-bootstrap/Button';
+import { Button } from 'antd';
 
 import Cookies from 'js-cookie';
 import * as React from 'react';
@@ -11,12 +11,15 @@ import { logout } from '../store/auth.js';
 export default function ButtonAppBar() {
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const currentUser = useSelector((state) => state.auth.user);
+  const currentUserType = currentUser.userType;
   const dispatch = useDispatch();
 
   function _logout() {
     Cookies.remove('token');
     dispatch(logout());
     navigate('/login');
+   
   }
 /*
   return (
@@ -56,7 +59,15 @@ export default function ButtonAppBar() {
             <h2>Expense Approval System</h2>
 
             {isAuthenticated && (
-              <Button className="logout-button" variant="danger" onClick={_logout}>Logout</Button>
+            <div className='home_history_logout'>
+              <div><Link to="/" className='home-button'>Home</Link></div>
+
+              {currentUserType !== 'Employee' && (
+                  <div><Link to="/expense/history" className="history-button">History</Link></div>
+              )}
+
+              <div><Button className="logout-button" variant="text" onClick={_logout}>Logout</Button></div>
+            </div>
           )}
 
             {!isAuthenticated && (

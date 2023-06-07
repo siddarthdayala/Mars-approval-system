@@ -6,7 +6,7 @@ import FinanceDepartmentHistoryList from '../components/FinanceDepartmentHistory
 
 const History = () => {
   const currentUser = useSelector((storeState) => storeState.auth.user);
-  const currentUserType = currentUser.user.userType;
+  const currentUserType = currentUser.userType;
 
   return (
     <>

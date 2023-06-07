@@ -1,17 +1,17 @@
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Link from "@mui/material/Link";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import Cookie from "js-cookie";
-import * as React from "react";
-import { useDispatch } from "react-redux";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { setUser } from "../store/auth.js";
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import Cookie from 'js-cookie';
+import * as React from 'react';
+import { useDispatch } from 'react-redux';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { setUser } from '../store/auth.js';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -20,24 +20,24 @@ export default function Login() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const form = {
-      email: data.get("email"),
-      password: data.get("password"),
+      email: data.get('email'),
+      password: data.get('password'),
     };
 
     const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(form),
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
     });
 
     const { token, user } = await res.json();
-
+    console.log(token,user)
     if (res.ok) {
-      Cookie.set("token", token);
+      Cookie.set('token', token);
       dispatch(setUser(user));
-      navigate("/");
+      navigate('/');
     }
   };
 
@@ -46,12 +46,12 @@ export default function Login() {
       <Box
         sx={{
           marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -90,7 +90,7 @@ export default function Login() {
             <Grid item>
               <RouterLink to="/register">
                 <Link component="span" variant="body2">
-                  <p>Don't have an account? Sign Up</p>
+                  {"Don't have an account? Sign Up"}
                 </Link>
               </RouterLink>
             </Grid>

@@ -42,18 +42,17 @@ const HRHistoryList = () => {
       <Typography sx={{ marginTop: 10 }} variant="h6">
         List of Expenses
       </Typography>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <TableContainer sx={{ background: 'none', boxShadow: 'none'}} component={Paper}>
+        <Table sx={{ width: '80%', margin: '0 auto' }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="center">Employee Name</TableCell>
+            <TableCell align="center">Employee Name</TableCell>
               <TableCell align="center">Employee Id</TableCell>
               <TableCell align="center">Project Name</TableCell>
               <TableCell align="center">Project Id</TableCell>
-              <TableCell align="center">Bill Proofs</TableCell>
+              <TableCell align="center">Claim Name</TableCell>
               <TableCell align="center">Status</TableCell>
-              <TableCell align="center">Amount</TableCell>
-              <TableCell align="center">Description</TableCell>
+              <TableCell align="center">Amount (Rs)</TableCell>
               <TableCell align="center">Date</TableCell>
             </TableRow>
           </TableHead>
@@ -61,7 +60,6 @@ const HRHistoryList = () => {
             {expenses.map((row) => (
               <TableRow
                 key={row._id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell align="center" component="th" scope="row">
                   {row.empName}
@@ -69,12 +67,12 @@ const HRHistoryList = () => {
                 <TableCell align="center">{row.empId}</TableCell>
                 <TableCell align="center">{row.projName}</TableCell>
                 <TableCell align="center">{row.projId}</TableCell>
-                <TableCell align="center">{row.billProof}</TableCell>
+                <TableCell align="center">{row.description}</TableCell>
                 <TableCell align="center">{
-                  row.status === 'Rejected'?'Rejected':'Accepted'
+                  //.status === 'Rejected'?'Rejected':'Accepted'
+                  row.currentStatus
                 }</TableCell>
                 <TableCell align="center">{row.amount}</TableCell>
-                <TableCell align="center">{row.description}</TableCell>
                 <TableCell align="center">{formatDate(row.date)}</TableCell>
               </TableRow>
             ))}
