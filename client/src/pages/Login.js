@@ -1,4 +1,5 @@
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -33,7 +34,7 @@ export default function Login() {
     });
 
     const { token, user } = await res.json();
-    console.log(token,user)
+
     if (res.ok) {
       Cookie.set('token', token);
       dispatch(setUser(user));
@@ -42,20 +43,28 @@ export default function Login() {
   };
 
   return (
-    <Container>
-      <Box
+    <Container className='log1'>
+      <Box className='logform'
         sx={{
           marginTop: 8,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          justifyContent: 'center',
+          position: 'absolute',
+          minWidth: 300,
+          maxWidth: 350,
+          left: '50%',
+          right: '50%',
+          transform: 'translate(-50%,30%)'
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          <LockOutlinedIcon />
+        
+        <Avatar sx={{ m: 1, bgcolor: 'white' }}>
+          <LockOutlinedIcon color='primary'/>
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          SIGN IN
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
@@ -98,5 +107,5 @@ export default function Login() {
         </Box>
       </Box>
     </Container>
-  );
+);
 }

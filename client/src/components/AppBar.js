@@ -60,13 +60,16 @@ export default function ButtonAppBar() {
 
             {isAuthenticated && (
             <div className='home_history_logout'>
-              <div><Link to="/" className='home-button'>Home</Link></div>
 
               {currentUserType !== 'Employee' && (
+                <>
+                  <div><Link to="/" className='home-button'>Home</Link></div>
                   <div><Link to="/expense/history" className="history-button">History</Link></div>
+                </>
+                 
               )}
 
-              <div><Button className="logout-button" variant="text" onClick={_logout}>Logout</Button></div>
+              <div><a className="logout-button" variant="text" onClick={_logout}>Logout</a></div>
             </div>
           )}
 

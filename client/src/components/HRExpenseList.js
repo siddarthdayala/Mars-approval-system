@@ -15,7 +15,7 @@ import Cookies from 'js-cookie';
 import DoneIcon from '@mui/icons-material/Done';
 import ClearIcon from '@mui/icons-material/Clear';
 import axios from 'axios';
-import { Image } from 'antd';
+import { Image, Modal, Input } from 'antd';
 
 // import * as React from 'react';
 // import { useSelector } from "react-redux";
@@ -31,6 +31,11 @@ export default function HRExpenseList() {
   const [photos, setPhotos] = useState([]);
   const [photoUi, setPhotoUi] = useState("");
   const [visible, setVisible] = useState(false);
+  const [rejectModal, setRejectModal] = useState(false);
+  const [reason, setReason] = useState("");
+  const [rejectedClaim, setRejectedClaim] = useState({})
+
+  const { TextArea } = Input;
  
   useEffect(() => {
     fetchExpenses();
@@ -74,9 +79,10 @@ export default function HRExpenseList() {
       fetchExpenses();
     }
   }
-  async function reject(row) {
+  async function reject() {
+    const row = rejectedClaim;
     const token = Cookies.get('token');
-    const data = { ...row, status: 'Rejected' };
+    const data = { ...row, status: 'Rejected', reason: reason };
     const res = await fetch(
       `${process.env.REACT_APP_API_URL}/expense/${row._id}`,
       {
@@ -137,7 +143,6 @@ export default function HRExpenseList() {
             {expenses.map((row) => (
               <TableRow
                 key={row._id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell align="center" component="th" scope="row">
                   {row.empName}
@@ -146,11 +151,10 @@ export default function HRExpenseList() {
                 <TableCell align="center">{row.projName}</TableCell>
                 <TableCell align="center">{row.projId}</TableCell>
                 <TableCell align="center">{row.description}</TableCell>
-                <TableCell align="center"><a style={{color: 'blue', cursor:'pointer'}} onClick={()=>imagePreview(row)}>Click Here</a></TableCell>
+                <TableCell align="center"><a style={{color: '#262fe3', cursor:'pointer'}} onClick={()=>imagePreview(row)}>Click Here</a></TableCell>
 
                 { visible && 
                     photos.map(({ photo, _id })=>{
-                      console.log(photoUi)
                       let fname = photoUi.billProof.slice(photoUi.billProof.indexOf(":")+2, photoUi.billProof.indexOf("lastModified")-3);
 
                       if(photo.slice(8)===fname || photo.slice(9)===fname || photo.slice(10)===fname){
@@ -187,7 +191,7 @@ export default function HRExpenseList() {
                   <IconButton
                     color="warning"
                     component="label"
-                    onClick={() => reject(row)}
+                    onClick={()=>{setRejectModal(true);setRejectedClaim(row)}}
                   >
                     <ClearIcon />
                   </IconButton>
@@ -198,6 +202,27 @@ export default function HRExpenseList() {
         </Table>
       </TableContainer>
 
+
+    {
+      rejectModal && 
+      <Modal
+        open={rejectModal}
+        onCancel={()=>setRejectModal(false)}
+        onOk={()=>{reject();setRejectModal(false)}}
+      >
+      <h5>Enter the Reason here</h5>
+      <TextArea
+        value={reason}
+        onChange={(e)=>setReason(e.target.value)}
+        placeholder="Write here..."
+        autosize={{
+          minRows: 3,
+          maxRows: 5
+        }}
+      >
+      </TextArea>
+      </Modal>
+    }
       
     </>
   );

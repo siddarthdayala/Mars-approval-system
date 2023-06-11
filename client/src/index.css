@@ -11,12 +11,50 @@
 }
 
 body{
-  background:
-  url(https://images.unsplash.com/photo-1508615070457-7baeba4003ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80)
+  background: url(https://images.unsplash.com/photo-1686204045009-69880530ca66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80)
   center / cover no-repeat fixed;
-  //background:
-  //url(https://images.unsplash.com/photo-1684194952323-332460c595e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80)
-  //center / cover no-repeat fixed;
+}
+
+.log1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.logform{
+  background-color: rgba(255, 255, 255, 0.33);
+  backdrop-filter: blur(8px);
+  padding: 16px 16px 26px 16px;
+  box-shadow: 0px 8px 32px 0 rgba(32, 31, 31, 0.33);
+  width: 40vw;
+  height: max-content;
+  border-radius: 16px;
+}
+.reg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.regform
+{
+  background-color: rgba(255, 255, 255, 0.33);
+  border-radius: 16px; 
+  box-shadow: 0px 8px 32px 0 rgba(32, 31, 31, 0.33);
+  backdrop-filter: blur(8px);
+  height: max-content;
+  width: 40vw;
+  padding: 16px 16px 26px 16px;
+}
+
+
+#demo-simple-select{
+  min-width: 150px;
+  max-width: 200px;
 }
 
 .nav{
@@ -42,22 +80,19 @@ body{
 
 .home_history_logout div{
   margin-right: 20px;
-  font-size: 18px;
-
 }
 
 .home-button, .history-button{
   color: black;
   text-decoration: none;
+  font-size: 22px;
 }
 
 .logout-button{
-  background: none;
+  text-decoration: none;
   color: black;
-  margin-top: -4px;
-  font-size: 18px;
-
-  padding: 0px;
+  font-size: 22px;
+  cursor: pointer;
 }
 
 .login_register{
@@ -122,6 +157,9 @@ body{
 .pagination{
   display: table;
   margin: 8px auto;
+  background: #c0dbf1;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 
@@ -135,27 +173,22 @@ body{
     margin-left: 100px;
 }
 
-.modal-proof img{
-  height: 50px;
-  width: 50px;
+.rejection-reason{
+  margin-top: 30px 
 }
 
-
-.check-status-btn: hover{
-  background-color: white;
-  color: white;
-}
 
 
 .MuiTable-root{
-  border: 1px solid rgba(255, 255, 255, .25);
-  background-color: rgba(255, 255, 255, 0.45);
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  backdrop-filter: blur(15px);
+  background: rgba( 255, 255, 255, 0.55 );
+  box-shadow: 10px 10px 10px  rgba(46, 54, 68, 0.03); 
+  backdrop-filter: blur( 50px );
 }
 
+
 .MuiTableHead-root{
-  border: 1px solid rgba(255, 255, 255, .25);
+  //border: 1px solid rgba(255, 255, 255, .25);
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(15px);
 }
+

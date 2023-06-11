@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'; 
 
 const expenseSchema = new mongoose.Schema({
-  empName: String,
+  empName: String, 
   empId: String,
   projName: String,
   projId: String,
@@ -18,9 +18,10 @@ const expenseSchema = new mongoose.Schema({
       'DirectorApproved',
       'FinanceDepartmentApproved',
     ],
-    default: 'EmployeeRequested',
+    default: 'EmployeeRequested', 
   },
-  date: { type: Date, default: new Date() },
+  reason: {type: String, default: ""},
+  date: { type: Date, default: new Date() },  
   createdAt: { type: Date, default: Date.now },
 });
 

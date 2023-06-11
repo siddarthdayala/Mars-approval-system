@@ -1,4 +1,4 @@
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Person2SharpIcon from '@mui/icons-material/Person2Sharp';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -48,30 +48,42 @@ export default function Register() {
   }
 
   return (
-    <Container>
-      <Box
+    <Container className='reg'>
+      <Box className='regform'
         sx={{
           marginTop: 8,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          justifyContent: 'center',
+          position: 'absolute',
+          minWidth: 300,
+          maxWidth: 350,
+          right: '50%',
+          left: '50%',
+          transform: 'translate(-50%,0%)',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          <LockOutlinedIcon />
+        <Avatar sx={{ m: 1, bgcolor: 'white' }}>
+          <Person2SharpIcon color='primary'/>
         </Avatar>
+        
         <Typography component="h1" variant="h5">
-          Sign up
+          SIGN UP
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-          <Grid container spacing={2}>
+          <Grid className='sign' container
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={2}>
             <Grid item xs={12} sm={4.5}>
               <TextField
                 autoComplete="given-name"
                 name="firstName"
                 required
                 fullWidth
-                id="firstName"
+                id="first-Name"
                 label="First Name"
                 autoFocus
               />
@@ -86,7 +98,7 @@ export default function Register() {
                 autoComplete="family-name"
               />
             </Grid>
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={12} sm={4.5}>
               <TextField
                 required
                 fullWidth
@@ -96,7 +108,7 @@ export default function Register() {
                 autoComplete="family-name"
               />
             </Grid>
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={12} sm={4.5}>
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">User Type</InputLabel>
                 <Select
@@ -157,5 +169,5 @@ export default function Register() {
         </Box>
       </Box>
     </Container>
-  );
+);
 }

@@ -4,7 +4,7 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import dayjs from 'dayjs';
 import Cookies from 'js-cookie';
 import * as React from 'react';
-import { Input, Button, Image, Card, Row, Col, Modal, Steps, Pagination } from 'antd';
+import { Input, Button, Image, Card, Row, Col, Modal, Steps, Pagination, ConfigProvider, Empty } from 'antd';
 
 import 'antd/dist/reset.css'; 
 import { useState, useEffect }  from "react";
@@ -69,6 +69,15 @@ export default function ExpenseList({
     const pageSize = 6;
     const [photos, setPhotos] = useState([]);
     const [photoUi, setPhotoUi] = useState("");
+    const statusMappings = {
+      "EmployeeRequested": 1,
+      "HRApproved": 2,
+      "DirectorApproved": 3,
+      "FinanceDepartmentApproved": 4,
+      "Approved": "process",
+      "Rejected": "error",
+      "InProcess": "process"
+    }
 
     useEffect(() => {
       axios.get("http://localhost:4000/api/get")
@@ -108,7 +117,8 @@ export default function ExpenseList({
 
       */}
     
-
+    {!currentData && 
+    <Empty description="No claims"></Empty>}
 
     <Row>
       {currentData.map((row)=>{
@@ -152,25 +162,38 @@ export default function ExpenseList({
     
       
     </Row>
-  
-    <Pagination 
-          className='pagination'
-          total={data.length}
-          current={page}
-          pageSize={pageSize}
-          showQuickJumper
-          onChange={(page)=>{
-            setPage(page);
-          }}
-      />
+
+  {
+    currentData &&
+    <ConfigProvider
+      theme={{
+        token: {
+          colorTextDisabled: "rgba(0, 0, 0, 0.88)",
+        },
+      }}
+    >
+      <Pagination 
+            className='pagination'
+            simple
+            total={data.length}
+            current={page}
+            pageSize={pageSize}
+            showQuickJumper
+            onChange={(page)=>{
+              setPage(page);
+            }}
+       />
+
+    </ConfigProvider>
+  }
+
+    
     
    
 
 
     {
       openModal &&
-
-      
     
     <Modal 
         open={openModal}
@@ -194,16 +217,19 @@ export default function ExpenseList({
             <div className='modal-details-1'>
                 <div className='modal-status'>
                   <h5>Status</h5>
+                  
                   <Steps
+                    status={statusMappings[selected.status]}
                     size='small'
                     direction="vertical"
-                    current={1}
+                    current={statusMappings[selected.currentStatus]}
                     items={[
                       {
                         title: 'Claim Submitted',
                       },
                       {
                         title: 'HR Approval',
+                        
                       },
                       {
                         title: 'Director Approval',
@@ -223,7 +249,7 @@ export default function ExpenseList({
 
                       if(photo.slice(8)===fname || photo.slice(9)===fname || photo.slice(10)===fname){
                         return(
-                          <Image key={_id} src={`http://localhost:4000/${photo}`} alt="proof" width={400} height={200} />
+                          <Image key={_id} src={`http://localhost:4000/${photo}`} alt="proof" width={400} height={170} />
                         )
                       }
                     })
@@ -231,6 +257,16 @@ export default function ExpenseList({
                 </div>
 
             </div>
+
+            {
+              selected.reason &&
+              <div className='rejection-reason'>
+              <h5>Reason for Rejection</h5>
+              <p>{selected.reason}</p>
+            </div>
+            }
+
+
 
             
         </div>
