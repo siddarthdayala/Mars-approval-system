@@ -10,9 +10,21 @@ import { logout } from '../store/auth.js';
 
 export default function ButtonAppBar() {
   const navigate = useNavigate();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const currentUser = useSelector((state) => state.auth.user);
-  const currentUserType = currentUser.userType;
+  //const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const currentState = useSelector((state)=>state);
+  const isAuthenticated = currentState.auth.isAuthenticated;
+  //const currentUser = useSelector((state) => state.auth.user);
+  console.log(currentState);
+  console.log(isAuthenticated);
+  var currentUserType;
+  if (isAuthenticated){
+    currentUserType = currentState.auth.user.userType;
+    console.log(currentUserType);
+  }
+  
+
+
+ 
   const dispatch = useDispatch();
 
   function _logout() {
@@ -58,7 +70,7 @@ export default function ButtonAppBar() {
 
             <h2>Expense Approval System</h2>
 
-            {isAuthenticated && (
+            {isAuthenticated &&(
             <div className='home_history_logout'>
 
               {currentUserType !== 'Employee' && (
@@ -72,18 +84,21 @@ export default function ButtonAppBar() {
               <div><a className="logout-button" variant="text" onClick={_logout}>Logout</a></div>
             </div>
           )}
+          
+          
 
             {!isAuthenticated && (
             <div className='login_register'>
               <Link to="/login" className="text-white">
-                <Button color="inherit" className='login-button'>Login</Button>
+                <a className='login-button'>Login</a>
               </Link>
               <Link to="/register" className="text-white">
-                <Button color="inherit" className='register-button'>Register</Button>
+                <a className='register-button'>Register</a>
               </Link>
             </div>
           )}
           </div>
+
        )
       
     

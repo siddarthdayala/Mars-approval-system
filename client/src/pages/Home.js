@@ -21,7 +21,7 @@ export default function Home() {
   const [editTransaction, setEditTransaction] = useState({});
   const [toggleForm, setToggleForm] = useState(false);
   const currentUser = useSelector((storeState) => storeState.auth.user);
-  const currentUserType = currentUser.userType;
+  const currentUserType = currentUser.user.userType;
 
 
   useEffect(() => {

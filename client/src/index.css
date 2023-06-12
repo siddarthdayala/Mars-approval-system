@@ -20,7 +20,7 @@ body{
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  //height: 100vh;
 }
 
 .logform{
@@ -32,6 +32,7 @@ body{
   height: max-content;
   border-radius: 16px;
 }
+
 .reg{
   display: flex;
   justify-content: center;
@@ -53,7 +54,7 @@ body{
 
 
 #demo-simple-select{
-  min-width: 150px;
+  min-width: 180px;
   max-width: 200px;
 }
 
@@ -96,13 +97,17 @@ body{
 }
 
 .login_register{
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
-.login-button{
-  margin-right: 7px;
-
+.login-button, .register-button{
+  margin-right: 15px;
+  text-decoration: none;
+  color: black;
+  font-size: 22px;
+  cursor: pointer;
 }
+
 
 .page-header{
   margin: 80px 0 30px 30px;

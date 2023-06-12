@@ -69,8 +69,7 @@ const HRHistoryList = () => {
                 <TableCell align="center">{row.projId}</TableCell>
                 <TableCell align="center">{row.description}</TableCell>
                 <TableCell align="center">{
-                  //.status === 'Rejected'?'Rejected':'Accepted'
-                  row.currentStatus
+                  row.status === 'Rejected'?'Rejected':'Accepted'
                 }</TableCell>
                 <TableCell align="center">{row.amount}</TableCell>
                 <TableCell align="center">{formatDate(row.date)}</TableCell>

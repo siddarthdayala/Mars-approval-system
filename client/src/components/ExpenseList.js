@@ -91,7 +91,7 @@ export default function ExpenseList({
     let indexOfFirstPage, indexOfLastPage, currentData;
     indexOfLastPage = page * pageSize;
     indexOfFirstPage = indexOfLastPage - pageSize;
-    currentData = data.slice(indexOfFirstPage,indexOfLastPage)
+    currentData = data.slice(indexOfFirstPage,indexOfLastPage);
     //console.log(indexOfLastPage,indexOfFirstPage,page,pageSize,currentData)
     
 
@@ -117,8 +117,21 @@ export default function ExpenseList({
 
       */}
     
-    {!currentData && 
-    <Empty description="No claims"></Empty>}
+    {
+      currentData.length==0 &&
+      <ConfigProvider
+        theme={{
+          token: {
+            colorText: "white",
+            fontSize: "21px"
+          },
+        }}
+      >
+          <Empty description="No claims"></Empty>
+      </ConfigProvider>
+     
+    }
+
 
     <Row>
       {currentData.map((row)=>{
@@ -164,7 +177,7 @@ export default function ExpenseList({
     </Row>
 
   {
-    currentData &&
+    currentData.length!=0 &&
     <ConfigProvider
       theme={{
         token: {
