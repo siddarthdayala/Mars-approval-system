@@ -39,9 +39,7 @@ const HRHistoryList = () => {
 
   return (
     <>
-      <Typography sx={{ marginTop: 10 }} variant="h6">
-        List of Expenses
-      </Typography>
+    <h3 className='page-header'>History</h3>
       <TableContainer sx={{ background: 'none', boxShadow: 'none'}} component={Paper}>
         <Table sx={{ width: '80%', margin: '0 auto' }} aria-label="simple table">
           <TableHead>

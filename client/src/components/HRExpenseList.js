@@ -118,7 +118,7 @@ export default function HRExpenseList() {
 
   function imagePreview(row){
     setVisible(true);
-    setPhotoUi(row);
+    setPhotoUi(row); 
   }
 
   return (
